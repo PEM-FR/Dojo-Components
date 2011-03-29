@@ -8,9 +8,34 @@ dojo.declare(
 	dijit._Contained,
 	{
 		// morphValidationTest : function
-		//		prends en paramètre une fonction utilisée pour effectuer un test
-		//		particulier non géré, ou difficile à gérer en regExp.
-		//		En général il faut lui préférer regExp ou regExpGen.
+		//		this property is a function to run a validation test
+		//		that does not really fit to regExp.
+		//		Only to be used if regExp ou regExpGen cannot help you.
+		//
+		//		Examples : 
+		//		myTextareaDijit.set(
+		// 			'morphValidationTest',
+		// 			dojo.hitch(
+		// 				this,
+		// 				function(valeur){
+		// 					return this._someCallbackFunction(valeur, anyArgsYouNeed);
+		// 				}
+		// 			)
+		// 		);
+		//
+		//		To check some date field....
+		//
+		// 		dijitValeurDefaut.set(
+		// 			'morphValidationTest',
+		// 			dojo.hitch(
+		// 				this,
+		// 				function(valeur){
+		// 					var newDate = new Date(valeur);
+		// 					return ('' != valeur && !isNaN(newDate.getYear()));
+		// 				}
+		// 			)
+		// 		);
+		
 		morphValidationTest : null,
 
 		validate: function(/*Boolean*/ isFocused){
