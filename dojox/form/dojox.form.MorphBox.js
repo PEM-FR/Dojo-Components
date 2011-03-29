@@ -1,4 +1,4 @@
-dojo.provide("dojox.form.MorphBox");
+ï»¿dojo.provide("dojox.form.MorphBox");
 
 dojo.require("dijit.form.ValidationTextBox");
 dojo.require("dijit.form.Textarea");
@@ -8,9 +8,9 @@ dojo.declare(
 	dijit._Contained,
 	{
 		// morphValidationTest : function
-		//		prends en paramètre une fonction utilisée pour effectuer un test
-		//		particulier non géré, ou difficile à gérer en regExp.
-		//		En général il faut lui préférer regExp ou regExpGen.
+		//		prends en paramÃ¨tre une fonction utilisÃ©e pour effectuer un test
+		//		particulier non gÃ©rÃ©, ou difficile Ã  gÃ©rer en regExp.
+		//		En gÃ©nÃ©ral il faut lui prÃ©fÃ©rer regExp ou regExpGen.
 		morphValidationTest : null,
 
 		validate: function(/*Boolean*/ isFocused){
@@ -25,7 +25,7 @@ dojo.declare(
 
 			// here we add the morphValidationTest
 			if(null != this.morphValidationTest){
-				// il faut tester si la propriété est une fonction ou pas
+				// il faut tester si la propriÃ©tÃ© est une fonction ou pas
 				if(dojo.isFunction(this.morphValidationTest)){
 					isValid = (this.morphValidationTest(this.textbox.value) && isValid);
 				}

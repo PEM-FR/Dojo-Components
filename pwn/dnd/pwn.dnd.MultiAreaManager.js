@@ -1,4 +1,4 @@
-// Author : PEM-FR (on github), PEM on #dojo on freenode, PEM_FR on dojofoundation
+﻿// Author : PEM-FR (on github), PEM on #dojo on freenode, PEM_FR on dojofoundation
 
 dojo.provide("pwn.dnd.MultiAreaManager");
 
