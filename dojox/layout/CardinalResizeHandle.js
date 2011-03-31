@@ -2,11 +2,9 @@ dojo.provide("dojox.layout.CardinalResizeHandle");
 
 dojo.require("dijit._Widget");
 
-dojo.declare("dojox.layout.CardinalResizeHandle", dijit._Widget, {
+    dojo.declare("dojox.layout.CardinalResizeHandle", dijit._Widget, {
         // summary:
         //        A class to create a resizehandle based on the cardinal system
-		//		  example http://jsfiddle.net/fCD7W/10/
-	
         // targetId:
         //        id of the Widget OR DomNode that I will size
         targetId: "",
@@ -45,6 +43,7 @@ dojo.declare("dojox.layout.CardinalResizeHandle", dijit._Widget, {
 
             // create the resize-avatar
             this._avatar = dojo.create("div", {
+                "class": "dojoxLayoutCardinalResizeAvatar",
                 style: {
                     "position": "absolute",
                     "zIndex": "auto"
@@ -81,6 +80,12 @@ dojo.declare("dojox.layout.CardinalResizeHandle", dijit._Widget, {
         _mouseDown: false,
         _lastDirection: "",
         _lastMarginBox: {
+            l: 0,
+            t: 0,
+            w: 0,
+            h: 0
+        },
+        _lastCalculatedMarginBox: {
             l: 0,
             t: 0,
             w: 0,
@@ -137,7 +142,7 @@ dojo.declare("dojox.layout.CardinalResizeHandle", dijit._Widget, {
             //        protected
             if (this._mouseDown == true) {
                 if (this.activeResize === false) {
-                    dojo.marginBox(this.targetNode, dojo.marginBox(this._avatar));
+                    dojo.marginBox(this.targetNode, this._lastCalculatedMarginBox);
                 }
                 this.onResizeComplete(dojo.marginBox(this._avatar));
             }
@@ -169,25 +174,32 @@ dojo.declare("dojox.layout.CardinalResizeHandle", dijit._Widget, {
 
                 //apply the new size
                 dojo.marginBox(this._avatar, newBox);
+                this._lastCalculatedMarginBox = newBox;
                 if (this.activeResize === true) {
                     dojo.marginBox(this.targetNode, newBox);
                 }
                 this.onResize(this.targetNode, newBox);
                 this._createResizeHandles();
                 dojo.publish("/dojox/layout/CardinalResizeHandle/onResize", [{
+                    handle: this,
                     node: this.targetNode,
                     marginBox: newBox,
                     }]);
                 dojo.stopEvent(e);
             }
         },
-        _createResizeHandles: function() {
+        _createResizeHandles: function(/*Object?*/message) {
             // summary:
             //        Creates new or updates existing squares based on the
             //        cardinal system to provide the resize handles
             // tags:
             //        protected
             // update the avatar position of needed
+            if(message){
+                if(message.handle == this){
+                    return;  
+                }
+            }            
             var mBox = dojo.marginBox(this.targetNode);
             dojo.marginBox(this._avatar, {
                 l: mBox.l,
