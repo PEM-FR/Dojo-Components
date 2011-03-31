@@ -1,5 +1,7 @@
 dojo.provide("dojox.layout.CardinalResizeHandle");
 
+dojo.require("dijit._Widget");
+
 dojo.declare("dojox.layout.CardinalResizeHandle", dijit._Widget, {
     // summary:
     //        A class to create a resizehandle based on the cardinal system
