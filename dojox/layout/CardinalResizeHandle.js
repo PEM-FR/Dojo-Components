@@ -231,14 +231,11 @@ dojo.declare("dojox.layout.CardinalResizeHandle", dijit._Widget, {
             }
         }];
         // create the resize handles based on the position descriptor
-        dojo.forEach(positions,
-        function(item) {
+        dojo.some(positions, function(item) {
             if (this.resizeAxis.indexOf(item.axis) == -1) {
                 return;
             }
-
             var node;
-
             if (! (node = dojo.query("." + "dojoxLayoutCardinalResizeSquare_" + item.direction, this.targetNode)[0])) {
                 node = dojo.create("div", {
                     "style": {
@@ -267,8 +264,7 @@ dojo.declare("dojox.layout.CardinalResizeHandle", dijit._Widget, {
         //disconnect listeners
         dojo.forEach(this._pconnects, dojo.disconnect);
         //destroy handleNodes
-        dojo.forEach(this._handleNodes,
-        function(node) {
+        dojo.forEach(this._handleNodes, function(node) {
             dojo.destroy(node);
         },
         this);
