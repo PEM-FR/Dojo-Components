@@ -5,6 +5,8 @@ dojo.require("dijit._Widget");
 dojo.declare("dojox.layout.CardinalResizeHandle", dijit._Widget, {
 	// summary:
 	//        A class to create a resizehandle based on the cardinal system
+	//        example http://jsfiddle.net/fCD7W/14/
+	
 	// targetId:
 	//        id of the Widget OR DomNode that I will size
 	targetId: "",
