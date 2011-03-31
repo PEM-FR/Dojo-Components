@@ -5,6 +5,8 @@ dojo.require("dijit._Widget");
 dojo.declare("dojox.layout.CardinalResizeHandle", dijit._Widget, {
         // summary:
         //        A class to create a resizehandle based on the cardinal system
+		//		  example http://jsfiddle.net/fCD7W/10/
+	
         // targetId:
         //        id of the Widget OR DomNode that I will size
         targetId: "",
@@ -257,7 +259,7 @@ dojo.declare("dojox.layout.CardinalResizeHandle", dijit._Widget, {
                     "top": ((dojo.marginBox(this._avatar).h / 2) - squareSizeHalf) + "px"
                 }}];
             // create the resize handles based on the position descriptor
-            dojo.forEach(positions, function(item) {
+            dojo.some(positions, function(item) {
                 if (this.resizeAxis.indexOf(item.axis) == -1) {
                     return;
                 }
