@@ -1,0 +1,24 @@
+<div style="height: 100%; width: 100%;">
+	<div data-dojo-type="dijit.layout.BorderContainer" data-dojo-props="design: 'sidebar', style: 'height: 100%; width: 100%; border: none;'">
+		<div data-dojo-type="dijit.Toolbar" data-dojo-props="region: 'top'">
+			<div data-dojo-type="dijit.form.Button" data-dojo-props="label: 'Back', disabled: true">
+			</div>
+			<div data-dojo-type="dijit.form.Button" data-dojo-props="label: 'Forward', disabled: true">
+			</div>
+			<div data-dojo-type="dijit.form.Button" data-dojo-props="label: 'Align to Grid', disabled: true">
+			</div>
+		</div>
+		<div data-dojo-type="dijit.layout.AccordionContainer" data-dojo-props="region: 'leading'">
+			<div data-dojo-type="dijit.layout.ContentPane" data-dojo-props="title: 'Toolbox'" data-dojo-attach-point="toolBox">
+				<div class="dojoxDndArea">
+					<div class="dndHandle">Widget 1</div>
+					<div class="dndHandle">Widget 2</div>
+					<div class="dndHandle">Widget 3</div>
+				</div>
+			</div>
+		</div>
+		<div data-dojo-type="dojox.architect.wrapped.dijit.layout.ContentPane" data-dojo-props="region: 'center'" data-dojo-attach-point="centerPane">
+			center
+		</div>		
+	</div>
+</div>
